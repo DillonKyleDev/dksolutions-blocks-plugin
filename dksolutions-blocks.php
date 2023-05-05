@@ -24,3 +24,34 @@ function dksolutions_block_script_register()
 }
 
 add_action('enqueue_block_editor_assets', 'dksolutions_block_script_register');
+
+
+
+// Enqueue Dependencies
+function load_dksolutions_blocks_css() {    
+  wp_register_style('dksolutions-bootstrap', plugin_dir_url( __FILE__ ) . '/dependencies/bootstrap/css/bootstrap.min.css', array(), false, 'all');
+  wp_enqueue_style('dksolutions-bootstrap'); 
+  
+  // Styles for Magnific Popup and Owl Carousel imported in app.scss file
+  wp_register_style('dksolutions-css', plugin_dir_url( __FILE__ ) . '/dist/app.css', array(), false, 'all');
+  wp_enqueue_style('dksolutions-css'); 
+}
+
+add_action('wp_enqueue_scripts', 'load_dksolutions_blocks_css');
+
+function load_dksolutions_blocks_js() {
+  wp_enqueue_script('jquery');
+  wp_register_script('dksolutions-bootstrap', plugin_dir_url( __FILE__ ) . '/dependencies/bootstrap/js/bootstrap.min.js', ['jquery'], false, true);
+  wp_enqueue_script('dksolutions-bootstrap');
+
+  wp_register_script('owl-carousel', plugin_dir_url( __FILE__ ) . '/dependencies/owl-carousel/js/owl.carousel.min.js', ['jquery'], false, true);
+  wp_enqueue_script('owl-carousel');
+
+  wp_register_script('magnific-popup', plugin_dir_url( __FILE__ ) . '/dependencies/magnific-popup/js/jquery.magnific-popup.min.js', ['jquery'], false, true);
+  wp_enqueue_script('magnific-popup');
+
+  wp_register_script('dksolutions-js', plugin_dir_url( __FILE__ ) . '/dist/app.js', ['jquery'], false, true);
+  wp_enqueue_script('dksolutions-js');
+}
+
+add_action('wp_enqueue_scripts', 'load_dksolutions_blocks_js');

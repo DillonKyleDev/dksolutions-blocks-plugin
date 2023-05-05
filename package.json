@@ -1,0 +1,30 @@
+{
+  "name": "dksolutions-blocks-plugin",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch": "npx mix watch",
+    "mix": "npx mix",
+    "prod": "npm run production"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DillonKyleDev/dksolutions-blocks-plugin.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DillonKyleDev/dksolutions-blocks-plugin/issues"
+  },
+  "homepage": "https://github.com/DillonKyleDev/dksolutions-blocks-plugin#readme",
+  "devDependencies": {
+    "laravel-mix": "^6.0.49",
+    "resolve-url-loader": "^5.0.0",
+    "sass": "^1.62.1",
+    "sass-loader": "^12.1.0"
+  }
+}
