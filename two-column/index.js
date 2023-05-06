@@ -6,9 +6,15 @@ wp.blocks.registerBlockType('dksolutions/two-column', {
   attributes: { 
     companyName: { type: "string" },
     companyPhone: { type: "string" },
-    companyAddress: { type: "string" }
+    companyAddress: { type: "string" },
+    // Go here for info on adding editor fields
+    // https://awhitepixel.com/blog/add-custom-settings-to-existing-wordpress-gutenberg-blocks/
+    // Advanced tab fields
+    isChecked: { type: "bool" }
   },
   edit: function(props) {
+    const { InspectorAdvancedControls } = wp.blockEditor;
+
     function handleName(e) {      
       props.setAttributes({ companyName: e.target.value })
     }
@@ -45,7 +51,8 @@ wp.blocks.registerBlockType('dksolutions/two-column', {
       value: props.attributes.companyAddress,
       placeholder: "Company Name",
       onChange:handleAddress
-    }));
+    }
+    ));
   },
   save: function(props) {
     return React.createElement("div", {

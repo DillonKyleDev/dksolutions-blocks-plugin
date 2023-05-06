@@ -7,6 +7,8 @@ wp.blocks.registerBlockType('dksolutions/default-block', {
     companyName: { type: "string" },
     companyPhone: { type: "string" },
     companyAddress: { type: "string" }
+    // Go here for info on adding editor fields
+    // https://awhitepixel.com/blog/add-custom-settings-to-existing-wordpress-gutenberg-blocks/
   },
   edit: function(props) {
     function handleName(e) {      

@@ -16,11 +16,14 @@ if( !defined('ABSPATH') )
 
 function dksolutions_block_script_register()
 {
-  // wp_register_script('default-block', plugin_dir_url( __FILE__ ) . 'default-block/index.js', array('wp-blocks', 'wp-i18n', 'wp-editor'), 1, false);
+  // wp_register_script('default-block', plugin_dir_url( __FILE__ ) . 'default-block/index.js', array('wp-blocks', 'wp-i18n', 'wp-editor', 'wp-edit-post'), 1, false);
   // wp_enqueue_script('default-block');
 
-  wp_register_script('two-column-block', plugin_dir_url( __FILE__ ) . 'two-column/index.js', array('wp-blocks', 'wp-i18n', 'wp-editor'), 1, false);
+  wp_register_script('two-column-block', plugin_dir_url( __FILE__ ) . 'two-column/index.js', array('wp-blocks', 'wp-i18n', 'wp-editor', 'wp-edit-post'), 1, false);
   wp_enqueue_script('two-column-block');
+
+  wp_register_script('test-block', plugin_dir_url( __FILE__ ) . 'test-block/index.js', array('wp-blocks', 'wp-i18n', 'wp-editor', 'wp-edit-post'), 1, false);
+  wp_enqueue_script('test-block');
 }
 
 add_action('enqueue_block_editor_assets', 'dksolutions_block_script_register');
