@@ -19,7 +19,12 @@ function dksolutions_block_script_register()
   // wp_register_script('default-block', plugin_dir_url( __FILE__ ) . 'default-block/index.js', array('wp-blocks', 'wp-i18n', 'wp-editor', 'wp-edit-post'), 1, false);
   // wp_enqueue_script('default-block');
 
-  wp_register_script('two-column-block', plugin_dir_url( __FILE__ ) . 'two-column/index.js', array('wp-blocks', 'wp-i18n', 'wp-editor', 'wp-edit-post'), 1, false);
+
+  // MAKE SURE TO:
+  // 1. Add any more block js files to the package.json build and start scripts for building the jsx into React code
+  // 2. Make sure to link to the built js file instead of the one you're writing the code in like below!
+  // 3. Make sure you're building/starting your watch protocal while editing or changes will not be built.
+  wp_register_script('two-column-block', plugin_dir_url( __FILE__ ) . 'build/index.js', array('wp-blocks', 'wp-i18n', 'wp-editor', 'wp-edit-post'), 1, false);
   wp_enqueue_script('two-column-block');
 
   wp_register_script('test-block', plugin_dir_url( __FILE__ ) . 'test-block/index.js', array('wp-blocks', 'wp-i18n', 'wp-editor', 'wp-edit-post'), 1, false);
