@@ -90,48 +90,122 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
 
+const {
+  registerBlockType
+} = wp.blocks;
+const {
+  RichText,
+  InspectorControls
+} = wp.blockEditor;
+const {
+  ToggleControl,
+  PanelBody,
+  PanelRow,
+  CheckboxControl,
+  SelectControl,
+  ColorPicker
+} = wp.components;
 wp.blocks.registerBlockType('dksolutions/two-column', {
   title: "Two Column",
-  // On the dashicons website it is 'dashicons-block-default' but we remove the 'dashicons-' part for this.
   icon: "block-default",
   category: "design",
   attributes: {
-    companyName: {
+    leftColumnContentType: {
       type: "string"
     },
-    companyPhone: {
+    leftColumnContent: {
       type: "string"
     },
-    companyAddress: {
+    rightColumnContentType: {
       type: "string"
     },
-    // Go here for info on adding editor fields
-    // https://awhitepixel.com/blog/add-custom-settings-to-existing-wordpress-gutenberg-blocks/
-    // Advanced tab fields
-    isChecked: {
-      type: "bool"
+    rightColumnContent: {
+      type: "string"
+    },
+    styles: {
+      contentWidth: {
+        type: "string"
+      },
+      backgroundColor: {
+        type: "string"
+      }
     }
   },
   edit: function (props) {
     const {
-      InspectorAdvancedControls
-    } = wp.blockEditor;
-    function handleName(e) {
-      props.setAttributes({
-        companyName: e.target.value
-      });
-    }
-    function handlePhone(e) {
-      props.setAttributes({
-        companyPhone: e.target.value
-      });
-    }
-    function handleAddress(e) {
-      props.setAttributes({
-        companyAddress: e.target.value
-      });
-    }
-    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("form", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("label", null, "Company Name"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("input", {
+      attributes,
+      setAttributes
+    } = props;
+    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(InspectorControls, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(PanelBody, {
+      title: "Styles",
+      initialOpen: false
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(SelectControl, {
+      label: "Content Width",
+      value: attributes.styles.contentWidth,
+      options: [{
+        label: "Content",
+        value: 'content'
+      }, {
+        label: "Photo",
+        value: 'photo'
+      }, {
+        label: "Quote",
+        value: 'quote'
+      }],
+      onChange: newval => setAttributes({
+        contentWidth: newval
+      })
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(ColorPicker, {
+      label: "Background Color",
+      color: attributes.styles.backgroundColor,
+      onChangeComplete: newval => setAttributes({
+        backgroundColor: newval.hex
+      })
+    })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(PanelBody, {
+      title: "Left Column",
+      initialOpen: true
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(SelectControl, {
+      label: "Column Type",
+      value: attributes.leftColumnContentType,
+      options: [{
+        label: "Content",
+        value: 'content'
+      }, {
+        label: "Photo",
+        value: 'photo'
+      }, {
+        label: "Quote",
+        value: 'quote'
+      }],
+      onChange: newval => setAttributes({
+        leftColumnContentType: newval
+      })
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(RichText, {
+      label: "Content",
+      value: attributes.content
+    })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(PanelBody, {
+      title: "Right Column",
+      initialOpen: false
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(SelectControl, {
+      label: "Column Type",
+      value: attributes.rightColumnContentType,
+      options: [{
+        label: "Content",
+        value: 'content'
+      }, {
+        label: "Photo",
+        value: 'photo'
+      }, {
+        label: "Quote",
+        value: 'quote'
+      }],
+      onChange: newval => setAttributes({
+        rightColumnContentType: newval
+      })
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(RichText, {
+      label: "Content",
+      value: attributes.rightColumnContent
+    }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("form", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("label", null, "Company Name"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("input", {
       type: "text",
       value: props.attributes.companyName,
       placeholder: "Company Name",
