@@ -311,7 +311,7 @@ p.large {
 }
 
 .components-base-control {
-  margin-bottom: 0 !important;
+  margin-bottom: 10px !important;
 }
 
 @font-face {

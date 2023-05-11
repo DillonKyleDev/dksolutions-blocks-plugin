@@ -25,7 +25,7 @@ function dksolutions_block_script_register()
   wp_register_style('dksolutions-css', plugin_dir_url( __FILE__ ) . '/dist/app.css', array(), false, 'all');
   wp_enqueue_style('dksolutions-css'); 
 
-  wp_register_script('two-column-block', plugin_dir_url( __FILE__ ) . 'build/index.js', array('wp-blocks', 'wp-i18n', 'wp-editor', 'wp-edit-post'), 1, false);
+  wp_register_script('two-column-block', plugin_dir_url( __FILE__ ) . 'build/index.js', array('wp-blocks', 'wp-i18n', 'wp-editor', 'wp-edit-post', 'wp-block-editor'), 1, false);
   wp_enqueue_script('two-column-block');
 }
 

@@ -1,11 +1,13 @@
-const { RichText, InspectorControls } = wp.blockEditor;
-const { PanelBody, SelectControl } = wp.components;
+const { RichText, useBlockProps, InspectorControls } = wp.blockEditor;
+const { PanelBody, SelectControl, Button } = wp.components;
+
 
 import { renderModuleInspectorStyles, sizeOptions } from '../module-base/module.js';
 import { renderFrontend } from './renderFrontend.js';
 
 export function renderEdit(props) {
   const { attributes, setAttributes } = props;   
+  const blockProps = useBlockProps();
 
   return (
     <div>
@@ -38,12 +40,17 @@ export function renderEdit(props) {
             />
             { attributes.leftColumnContentType === 'content' &&
             <>
-              <h2 className="field-heading">Left Column Content</h2>
-              <RichText       
-                tagName="h2"       
-                value={attributes.leftColumnContent}
-                onChange={(newval) => setAttributes({ leftColumnContent: newval })}
-              />
+              <h2 className="field-heading">Left Column Content</h2>                            
+              <h3 className="field-heading">Content Heading</h3>
+              <RichText                    
+                value={ attributes.leftColumnContentHeading }  
+                onChange={(newval) => setAttributes({ leftColumnContentHeading: newval })}
+              />                  
+              <h3 className="field-heading">Content Body</h3>
+              <RichText                    
+                value={ attributes.leftColumnContentBody } 
+                onChange={(newval) => setAttributes({ leftColumnContentBody: newval })}
+              />              
             </> 
             }
             { attributes.leftColumnContentType === 'image' &&
@@ -82,10 +89,16 @@ export function renderEdit(props) {
             { attributes.rightColumnContentType === 'content' &&
             <>
               <h2 className="field-heading">Right Column Content</h2>
-              <RichText              
-                value={attributes.rightColumnContent}
-                onChange={(newval) => setAttributes({ rightColumnContent: newval })}
-              />
+              <h3 className="field-heading">Content Heading</h3>
+              <RichText                    
+                value={ attributes.rightColumnContentHeading }  
+                onChange={(newval) => setAttributes({ rightColumnContentHeading: newval })}
+              />                  
+              <h3 className="field-heading">Content Body</h3>
+              <RichText                    
+                value={ attributes.rightColumnContentBody } 
+                onChange={(newval) => setAttributes({ rightColumnContentBody: newval })}
+              />    
             </> 
             }
             { attributes.rightColumnContentType === 'image' &&
@@ -108,8 +121,8 @@ export function renderEdit(props) {
             }
           </PanelBody> 
         </PanelBody>
-      </InspectorControls>        
-      {renderFrontend(props, true)}
+      </InspectorControls>      
+      {renderFrontend(props)}
     </div>
   )
 }

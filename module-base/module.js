@@ -1,4 +1,5 @@
 const { PanelBody, SelectControl, ColorPicker } = wp.components;
+import { Component } from '@wordpress/element';
 
 export function moduleBase(content, styles) {
   const { 
@@ -17,18 +18,26 @@ export function moduleBase(content, styles) {
 }
 
 export const moduleStyles = {
+  backgroundType: { 
+    type: "string",
+    default: "color" 
+  },
   backgroundColor: { 
+    type: "string",
+    default: "white" 
+  },
+  backgroundImage: { 
     type: "string",
     default: "white" 
   },
   paddingTop: { 
     type: "string",
     default: "medium" 
-},
-  paddingBottom: { 
-    type: "string",
-    default: "medium"  
-},
+  },
+    paddingBottom: { 
+      type: "string",
+      default: "medium"  
+  },
 }
 
 export function renderModuleInspectorStyles(props) {

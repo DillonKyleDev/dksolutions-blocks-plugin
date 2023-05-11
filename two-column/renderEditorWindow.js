@@ -1,4 +1,5 @@
 const { RichText } = wp.blockEditor;
+import { InnerBlocks, useBlockProps } from '@wordpress/block-editor';
 
 import { moduleBase } from '../module-base/module.js';
 
@@ -15,16 +16,16 @@ export function renderFrontend(props) {
 
 function renderContent(props) {
   const { attributes } = props;
+  const blockProps = useBlockProps();
 
   return (
     <div className={`two-column two-column__column-gap--${attributes.columnGap}`}>
       <div className={`two-column__column two-column__column-type--${attributes.leftColumnContentType}`}>
         <div>
-          { attributes.leftColumnContentType === 'content' &&  
-            <>            
-              <RichText.Content tagName="h2" value={ attributes.leftColumnContentHeading } />     
-              <RichText.Content tagName="p" value={ attributes.leftColumnContentBody } />                     
-            </>                                            
+          { attributes.leftColumnContentType === 'content' &&          
+          <div { ...blockProps }>
+              <InnerBlocks.Content />       
+          </div>
           }
           { attributes.leftColumnContentType === 'image' &&           
           <>
@@ -41,10 +42,11 @@ function renderContent(props) {
       <div className={`two-column__column two-column__column-type--${attributes.rightColumnContentType}`}>
         <div>
           { attributes.rightColumnContentType === 'content' &&           
-            <>            
-              <RichText.Content tagName="h2" value={ attributes.rightColumnContentHeading } />     
-              <RichText.Content tagName="p" value={ attributes.rightColumnContentBody } />                     
-            </>   
+          <>
+            {attributes.rightColumnContent.forEach(content => {
+              <RichText.Content tagName="h2" value={ content } />
+            })}   
+          </>
           }
           { attributes.rightColumnContentType === 'image' &&           
           <>

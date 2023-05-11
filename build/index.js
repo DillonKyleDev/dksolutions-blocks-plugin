@@ -23,6 +23,7 @@ const {
   SelectControl,
   ColorPicker
 } = wp.components;
+
 function moduleBase(content, styles) {
   const {
     backgroundColor,
@@ -39,7 +40,15 @@ function moduleBase(content, styles) {
   }, content));
 }
 const moduleStyles = {
+  backgroundType: {
+    type: "string",
+    default: "color"
+  },
   backgroundColor: {
+    type: "string",
+    default: "white"
+  },
+  backgroundImage: {
     type: "string",
     default: "white"
   },
@@ -131,17 +140,27 @@ const moduleAttributes = {
   },
   leftColumnContentType: {
     type: "string",
-    default: "image"
+    default: "content"
   },
   rightColumnContentType: {
     type: "string",
     default: "content"
   },
-  leftColumnContent: {
-    type: "array"
+  leftColumnContentHeading: {
+    type: "string",
+    default: "Content Heading"
   },
-  rightColumnContent: {
-    type: "array"
+  leftColumnContentBody: {
+    type: "string",
+    default: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+  },
+  rightColumnContentHeading: {
+    type: "string",
+    default: "Content Heading"
+  },
+  rightColumnContentBody: {
+    type: "string",
+    default: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
   },
   leftImageUrl: {
     type: 'string',
@@ -193,11 +212,13 @@ __webpack_require__.r(__webpack_exports__);
 
 const {
   RichText,
+  useBlockProps,
   InspectorControls
 } = wp.blockEditor;
 const {
   PanelBody,
-  SelectControl
+  SelectControl,
+  Button
 } = wp.components;
 
 
@@ -206,6 +227,7 @@ function renderEdit(props) {
     attributes,
     setAttributes
   } = props;
+  const blockProps = useBlockProps();
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(InspectorControls, null, (0,_module_base_module_js__WEBPACK_IMPORTED_MODULE_1__.renderModuleInspectorStyles)(props), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(PanelBody, {
     title: "Columns Settings",
     initialOpen: true
@@ -239,11 +261,19 @@ function renderEdit(props) {
     })
   }), attributes.leftColumnContentType === 'content' && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("h2", {
     className: "field-heading"
-  }, "Left Column Content"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(RichText, {
-    tagName: "h2",
-    value: attributes.leftColumnContent,
+  }, "Left Column Content"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("h3", {
+    className: "field-heading"
+  }, "Content Heading"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(RichText, {
+    value: attributes.leftColumnContentHeading,
     onChange: newval => setAttributes({
-      leftColumnContent: newval
+      leftColumnContentHeading: newval
+    })
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("h3", {
+    className: "field-heading"
+  }, "Content Body"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(RichText, {
+    value: attributes.leftColumnContentBody,
+    onChange: newval => setAttributes({
+      leftColumnContentBody: newval
     })
   })), attributes.leftColumnContentType === 'image' && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("h2", {
     className: "field-heading"
@@ -281,10 +311,19 @@ function renderEdit(props) {
     })
   }), attributes.rightColumnContentType === 'content' && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("h2", {
     className: "field-heading"
-  }, "Right Column Content"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(RichText, {
-    value: attributes.rightColumnContent,
+  }, "Right Column Content"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("h3", {
+    className: "field-heading"
+  }, "Content Heading"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(RichText, {
+    value: attributes.rightColumnContentHeading,
     onChange: newval => setAttributes({
-      rightColumnContent: newval
+      rightColumnContentHeading: newval
+    })
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("h3", {
+    className: "field-heading"
+  }, "Content Body"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(RichText, {
+    value: attributes.rightColumnContentBody,
+    onChange: newval => setAttributes({
+      rightColumnContentBody: newval
     })
   })), attributes.rightColumnContentType === 'image' && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("h2", {
     className: "field-heading"
@@ -300,7 +339,7 @@ function renderEdit(props) {
     onChange: newval => setAttributes({
       rightVideoUrl: newval
     })
-  }))))), (0,_renderFrontend_js__WEBPACK_IMPORTED_MODULE_2__.renderFrontend)(props, true));
+  }))))), (0,_renderFrontend_js__WEBPACK_IMPORTED_MODULE_2__.renderFrontend)(props));
 }
 
 /***/ }),
@@ -324,7 +363,6 @@ const {
 } = wp.blockEditor;
 
 function renderFrontend(props) {
-  let in_editor_ = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
   const {
     attributes
   } = props;
@@ -333,9 +371,9 @@ function renderFrontend(props) {
     paddingTop: attributes.paddingTop,
     paddingBottom: attributes.paddingBottom
   };
-  return (0,_module_base_module_js__WEBPACK_IMPORTED_MODULE_1__.moduleBase)(renderContent(props, in_editor_), styles);
+  return (0,_module_base_module_js__WEBPACK_IMPORTED_MODULE_1__.moduleBase)(renderContent(props), styles);
 }
-function renderContent(props, in_editor_) {
+function renderContent(props) {
   const {
     attributes
   } = props;
@@ -344,14 +382,24 @@ function renderContent(props, in_editor_) {
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: `two-column__column two-column__column-type--${attributes.leftColumnContentType}`
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, attributes.leftColumnContentType === 'content' && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(RichText.Content, {
-    value: attributes.leftColumnContent
+    tagName: "h2",
+    value: attributes.leftColumnContentHeading
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(RichText.Content, {
+    tagName: "p",
+    value: attributes.leftColumnContentBody
   })), attributes.leftColumnContentType === 'image' && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
     src: attributes.leftImageUrl
   })), attributes.leftColumnContentType === 'video' && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
     src: attributes.leftImageUrl
   })))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: `two-column__column two-column__column-type--${attributes.rightColumnContentType}`
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, attributes.rightColumnContentType === 'content' && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, attributes.rightColumnContent), attributes.rightColumnContentType === 'image' && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, attributes.rightColumnContentType === 'content' && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(RichText.Content, {
+    tagName: "h2",
+    value: attributes.rightColumnContentHeading
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(RichText.Content, {
+    tagName: "p",
+    value: attributes.rightColumnContentBody
+  })), attributes.rightColumnContentType === 'image' && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
     src: attributes.rightImageUrl
   })), attributes.rightColumnContentType === 'video' && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
     src: attributes.rightImageUrl
