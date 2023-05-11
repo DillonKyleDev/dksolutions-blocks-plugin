@@ -1,0 +1,94 @@
+.module {   
+  &__padding-top {
+    &--xxxs {
+      padding-top: $padding--xxxs;
+    }
+
+    &--xxs {
+      padding-top: $padding--xxs;
+    }
+
+    &--xs {
+      padding-top: $padding--xs;
+    }
+
+    &--small {
+      padding-top: $padding--small;
+    }
+
+    &--medium {
+      padding-top: $padding--medium;
+    }
+
+    &--large {
+      padding-top: $padding--large;
+    }
+
+    &--xl {
+      padding-top: $padding--xl;
+    }
+
+    &--xxl {
+      padding-top: $padding--xxl;
+    }
+
+    &--xxxl {
+      padding-top: $padding--xxxl;
+    }
+  }
+
+  &__padding-bottom {
+    &--xxxs {
+      padding-bottom: $padding--xxxs;
+    }
+
+    &--xxs {
+      padding-bottom: $padding--xxs;
+    }
+
+    &--xs {
+      padding-bottom: $padding--xs;
+    }
+
+    &--small {
+      padding-bottom: $padding--small;
+    }
+
+    &--medium {
+      padding-bottom: $padding--medium;
+    }
+
+    &--large {
+      padding-bottom: $padding--large;
+    }
+
+    &--xl {
+      padding-bottom: $padding--xl;
+    }
+
+    &--xxl {
+      padding-bottom: $padding--xxl;
+    }
+
+    &--xxxl {
+      padding-bottom: $padding--xxxl;
+    }
+  }
+}
+
+.field-heading {
+  background-color: rgb(255, 206, 70);
+  padding: 10px 5px;
+  margin-bottom: 5px !important;
+}
+
+.components-panel__body {
+  border: solid 1px rgb(150, 150, 150) !important;
+  margin-bottom: 5px;
+
+  .block-editor-rich-text__editable {
+    border: solid 1px rgb(150, 150, 150) !important;
+    padding: 5px;
+  }
+}
+
