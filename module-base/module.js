@@ -23,11 +23,11 @@ export const moduleStyles = {
   },
   paddingTop: { 
     type: "string",
-    default: "xs" 
+    default: "medium" 
 },
   paddingBottom: { 
     type: "string",
-    default: "xs"  
+    default: "medium"  
 },
 }
 
@@ -39,29 +39,19 @@ export function renderModuleInspectorStyles(props) {
       title="Styles"
       initialOpen={false}
     >
-      <h2>Content Width</h2>
-      <SelectControl              
-        value={attributes.contentWidth}
-        options={[
-          {label: "Content", value: 'content'},
-          {label: "Photo", value: 'photo'},
-          {label: "Quote", value: 'quote'},
-        ]}
-        onChange={(newval) => setAttributes({ contentWidth: newval })}
-      />
-      <h2>Padding Top</h2>
+      <h2 className="field-heading">Padding Top</h2>
       <SelectControl              
         value={attributes.paddingTop}
         options={sizeOptions}
         onChange={(newval) => setAttributes({ paddingTop: newval })}
       />
-      <h2>Padding Bottom</h2>
+      <h2 className="field-heading">Padding Bottom</h2>
       <SelectControl              
         value={attributes.paddingBottom}
         options={sizeOptions}
         onChange={(newval) => setAttributes({ paddingBottom: newval })}
       />
-      <h2>Block Background Color</h2>
+      <h2 className="field-heading">Background Color</h2>
       <ColorPicker
         label="Background Color"
         color={attributes.backgroundColor}

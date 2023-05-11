@@ -76,19 +76,40 @@
   }
 }
 
+.interface-interface-skeleton__sidebar, .components-panel {
+  background: rgb(235, 235, 235);
+}
+
 .field-heading {
-  background-color: rgb(255, 206, 70);
-  padding: 10px 5px;
-  margin-bottom: 5px !important;
+  background-color: rgb(238, 238, 238);  
+  padding: 10px 16px;  
+  margin-left: -16px;
+  margin-right: -16px;
+  text-transform: uppercase;  
+  margin-bottom: 10px !important;
 }
 
 .components-panel__body {
   border: solid 1px rgb(150, 150, 150) !important;
+  box-shadow: $shadow--level-1;
   margin-bottom: 5px;
+  background-color: white;
+  
+  // &.is-opened {
+  //   padding: 16px 0;
+  // }
 
   .block-editor-rich-text__editable {
     border: solid 1px rgb(150, 150, 150) !important;
     padding: 5px;
   }
+
+  .components-button, .block-editor-block-card {
+    background-color: white;
+  }
 }
 
+// For inputs/selectors wrappers in inspector
+.components-base-control {
+  margin-bottom: 0 !important;
+}

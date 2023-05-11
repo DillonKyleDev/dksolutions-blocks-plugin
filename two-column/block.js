@@ -12,12 +12,10 @@ const moduleAttributes = {
     default: "content"
   },
   leftColumnContent: { 
-    type: "string",
-    default: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Arcu ac tortor dignissim convallis aenean et tortor. Massa sapien faucibus et molestie ac feugiat sed lectus vestibulum. In mollis nunc sed id. Enim neque volutpat ac tincidunt vitae semper quis lectus nulla. Feugiat pretium nibh ipsum consequat. Sit amet aliquam id diam maecenas ultricies mi eget mauris. Odio aenean sed adipiscing diam donec adipiscing tristique risus nec. Odio morbi quis commodo odio aenean sed adipiscing diam. Viverra aliquet eget sit amet tellus. Ac placerat vestibulum lectus mauris ultrices eros. Facilisis volutpat est velit egestas dui. Tincidunt eget nullam non nisi. Magnis dis parturient montes nascetur ridiculus mus mauris vitae ultricies. Elementum pulvinar etiam non quam lacus." 
+    type: "array"
   },
   rightColumnContent: { 
-    type: "string",
-    default: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Arcu ac tortor dignissim convallis aenean et tortor. Massa sapien faucibus et molestie ac feugiat sed lectus vestibulum. In mollis nunc sed id. Enim neque volutpat ac tincidunt vitae semper quis lectus nulla. Feugiat pretium nibh ipsum consequat. Sit amet aliquam id diam maecenas ultricies mi eget mauris. Odio aenean sed adipiscing diam donec adipiscing tristique risus nec. Odio morbi quis commodo odio aenean sed adipiscing diam. Viverra aliquet eget sit amet tellus. Ac placerat vestibulum lectus mauris ultrices eros. Facilisis volutpat est velit egestas dui. Tincidunt eget nullam non nisi. Magnis dis parturient montes nascetur ridiculus mus mauris vitae ultricies. Elementum pulvinar etiam non quam lacus." 
+    type: "array"
   },
   leftImageUrl: {
     type: 'string',
